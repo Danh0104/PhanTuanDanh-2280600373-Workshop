@@ -1,0 +1,9 @@
+{{- $src := .Destination -}}
+{{- $oldRepoPrefix := "/2280600178_huynhduybao_workshopaws/" -}}
+{{- if strings.HasPrefix $src $oldRepoPrefix -}}
+  {{- $src = printf "/%s" (strings.TrimPrefix $oldRepoPrefix $src) -}}
+{{- end -}}
+{{- if strings.HasPrefix $src "/" -}}
+  {{- $src = relURL (strings.TrimPrefix "/" $src) -}}
+{{- end -}}
+<img src="{{ $src | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}>
