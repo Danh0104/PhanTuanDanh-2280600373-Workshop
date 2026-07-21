@@ -1,48 +1,49 @@
----
+﻿---
 title: "Blog 3"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-![AWS media workflow with S3, MediaConvert, CloudFront, Lambda, EventBridge, CloudWatch va SNS](/images/3-BlogsPosted/3.3-Blog3/mediaconvert-workflow.svg)
+![AWS media workflow with S3, MediaConvert, CloudFront, Lambda, EventBridge, CloudWatch va SNS](/images/3-BlogsPosted/3.3-Blog3/mediaconvert-workflow.png)
 
-📝 Bài 3: Chia sẻ một trải nghiệm khi xây dựng Media Pipeline trên AWS
+ðŸ“ BÃ i 3: Chia sáº» má»™t tráº£i nghiá»‡m khi xÃ¢y dá»±ng Media Pipeline trÃªn AWS
 
-Xin chào mọi người,
+Xin chÃ o má»i ngÆ°á»i,
 
-Trong dự án **Netflop**, sau khi video được **AWS Elemental MediaConvert** xử lý xong, nhóm cần cập nhật trạng thái phim để người dùng có thể xem ngay.
+Trong dá»± Ã¡n **Netflop**, sau khi video Ä‘Æ°á»£c **AWS Elemental MediaConvert** xá»­ lÃ½ xong, nhÃ³m cáº§n cáº­p nháº­t tráº¡ng thÃ¡i phim Ä‘á»ƒ ngÆ°á»i dÃ¹ng cÃ³ thá»ƒ xem ngay.
 
-Ban đầu nhóm nghĩ đến việc Backend liên tục kiểm tra trạng thái Job (Polling), nhưng cách này vừa tốn tài nguyên vừa không hiệu quả.
+Ban Ä‘áº§u nhÃ³m nghÄ© Ä‘áº¿n viá»‡c Backend liÃªn tá»¥c kiá»ƒm tra tráº¡ng thÃ¡i Job (Polling), nhÆ°ng cÃ¡ch nÃ y vá»«a tá»‘n tÃ i nguyÃªn vá»«a khÃ´ng hiá»‡u quáº£.
 
-Sau đó nhóm chuyển sang mô hình **Event-Driven Architecture** với:
+Sau Ä‘Ã³ nhÃ³m chuyá»ƒn sang mÃ´ hÃ¬nh **Event-Driven Architecture** vá»›i:
 
-**MediaConvert → EventBridge → Lambda → Backend Webhook**
+**MediaConvert â†’ EventBridge â†’ Lambda â†’ Backend Webhook**
 
-Luồng hoạt động như sau:
+Luá»“ng hoáº¡t Ä‘á»™ng nhÆ° sau:
 
-📌 MediaConvert hoàn thành Job.
+ðŸ“Œ MediaConvert hoÃ n thÃ nh Job.
 
-📌 EventBridge tự động nhận sự kiện.
+ðŸ“Œ EventBridge tá»± Ä‘á»™ng nháº­n sá»± kiá»‡n.
 
-📌 Lambda được kích hoạt và gọi Webhook về Backend.
+ðŸ“Œ Lambda Ä‘Æ°á»£c kÃ­ch hoáº¡t vÃ  gá»i Webhook vá» Backend.
 
-📌 Backend cập nhật trạng thái tập phim từ **Processing** sang **Ready**.
+ðŸ“Œ Backend cáº­p nháº­t tráº¡ng thÃ¡i táº­p phim tá»« **Processing** sang **Ready**.
 
-Nhờ đó:
+Nhá» Ä‘Ã³:
 
-✅ Không cần Polling liên tục.
+âœ… KhÃ´ng cáº§n Polling liÃªn tá»¥c.
 
-✅ Backend nhẹ hơn.
+âœ… Backend nháº¹ hÆ¡n.
 
-✅ Hệ thống phản hồi gần như ngay khi encode hoàn tất.
+âœ… Há»‡ thá»‘ng pháº£n há»“i gáº§n nhÆ° ngay khi encode hoÃ n táº¥t.
 
-Qua dự án này, nhóm mình thấy **EventBridge** là một dịch vụ rất hữu ích để xây dựng các workflow tự động giữa các dịch vụ AWS.
+Qua dá»± Ã¡n nÃ y, nhÃ³m mÃ¬nh tháº¥y **EventBridge** lÃ  má»™t dá»‹ch vá»¥ ráº¥t há»¯u Ã­ch Ä‘á»ƒ xÃ¢y dá»±ng cÃ¡c workflow tá»± Ä‘á»™ng giá»¯a cÃ¡c dá»‹ch vá»¥ AWS.
 
-👉 Anh/chị và các bạn thường sử dụng **EventBridge**, **Amazon SQS** hay **AWS Step Functions** trong các hệ thống Event-Driven? Rất mong được trao đổi thêm!
+ðŸ‘‰ Anh/chá»‹ vÃ  cÃ¡c báº¡n thÆ°á»ng sá»­ dá»¥ng **EventBridge**, **Amazon SQS** hay **AWS Step Functions** trong cÃ¡c há»‡ thá»‘ng Event-Driven? Ráº¥t mong Ä‘Æ°á»£c trao Ä‘á»•i thÃªm!
 
-📚 Link tham khảo
+ðŸ“š Link tham kháº£o
 [https://docs.aws.amazon.com/mediaconvert/latest/ug/eventbridge_events.html](https://docs.aws.amazon.com/mediaconvert/latest/ug/eventbridge_events.html?utm_source=chatgpt.com)
 [https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-mediaconvert.html](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-mediaconvert.html?utm_source=chatgpt.com)
 [https://docs.aws.amazon.com/mediaconvert/latest/ug/mediaconvert_event_list.html](https://docs.aws.amazon.com/mediaconvert/latest/ug/mediaconvert_event_list.html?utm_source=chatgpt.com)
 [https://docs.aws.amazon.com/lambda/latest/dg/welcome.html](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
+

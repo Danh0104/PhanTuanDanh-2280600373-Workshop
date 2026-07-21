@@ -1,4 +1,4 @@
----
+﻿---
 title: "Internship Report"
 date: 2026-07-11
 weight: 1
@@ -29,7 +29,7 @@ chapter: false
 
 &emsp; **Report Topic:** AWS architecture analysis for the Netflop movie streaming web system
 
-![Profile photo - Phan Tuan Danh](/images/avatar.jpg)
+![Profile photo - Phan Tuan Danh](/images/avatar.png)
 
 ### Report Overview
 
@@ -46,3 +46,4 @@ The report includes weekly worklogs, architecture proposal, participated events,
 5. [Workshop](5-Workshop/)
 6. [Self-evaluation](6-Self-evaluation/)
 7. [Sharing and Feedback](7-Feedback/)
+

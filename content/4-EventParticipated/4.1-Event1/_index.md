@@ -119,3 +119,9 @@ The secure private MCP session also helped me realize that enterprise AI is not 
 * When building enterprise AI systems, security and governance must be treated as core requirements.
 * Communication, community learning, and teamwork are important for long-term career growth.
 
+### Event Photos
+
+![FCAJ Community Day invitation email](/images/events/fcaj-community-day-invitation.png)
+
+![AWS DevOps Agent resource slide at FCAJ Community Day](/images/events/fcaj-devops-agent-resources.png)
+

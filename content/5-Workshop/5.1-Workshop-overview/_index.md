@@ -1,4 +1,4 @@
----
+﻿---
 title: "Workshop overview"
 date: 2026-07-10
 weight: 1
@@ -8,7 +8,7 @@ pre: " <b> 5.1. </b> "
 
 This section introduces the overall AWS architecture of **Netflop** and the role of each service group. It helps explain the web access flow, HLS video processing flow, and automatic episode status update flow.
 
-![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.1-Workshop-overview/sodo.jpg)
+![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.1-Workshop-overview/sodo.png)
 
 #### Contents
 
@@ -47,3 +47,4 @@ The workshop is based on a real movie streaming website with two user groups:
 | Database dump | <code>database/web_xem_phim_final_dump.sql</code> |
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

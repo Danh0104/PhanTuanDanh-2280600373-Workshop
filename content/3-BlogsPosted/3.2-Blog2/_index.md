@@ -1,4 +1,4 @@
----
+﻿---
 title: "Blog 2"
 date: 2024-01-01
 weight: 1
@@ -6,10 +6,10 @@ chapter: false
 pre: " <b> 3.2. </b> "
 ---
 {{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
+âš ï¸ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-![S3, MediaConvert, CloudFront, and website streaming flow](/images/3-BlogsPosted/3.2-Blog2/s3-cloudfront-streaming.svg)
+![S3, MediaConvert, CloudFront, and website streaming flow](/images/3-BlogsPosted/3.2-Blog2/s3-cloudfront-streaming.png)
 
 # A Small Experience from Building a Movie Streaming Website on AWS
 
@@ -41,3 +41,4 @@ When building streaming systems, do you usually use **CloudFront**, direct **S3 
 - [What is Amazon CloudFront?](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 - [Serving private content with signed URLs and signed cookies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
 - [Use signed cookies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html)
+

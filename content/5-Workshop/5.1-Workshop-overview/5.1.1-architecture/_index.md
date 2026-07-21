@@ -1,4 +1,4 @@
----
+﻿---
 title: "Overall architecture"
 date: 2026-07-10
 weight: 1
@@ -98,7 +98,7 @@ Lambda converts .srt to .vtt if needed
 Video Player loads subtitle track
 ```
 
-![sodo](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.1-Workshop-overview/5.1.1-architecture/sodo.jpg)
+![sodo](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.1-Workshop-overview/5.1.1-architecture/sodo.png)
 
 <!-- NETFLOP_DETAIL_START -->
 #### How to implement the architecture
@@ -202,3 +202,4 @@ pool.execute = pool.query.bind(pool);
 ~~~
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

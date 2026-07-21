@@ -1,16 +1,16 @@
----
-title: "Kiến trúc tổng quan"
+﻿---
+title: "Kiáº¿n trÃºc tá»•ng quan"
 date: 2026-07-10
 weight: 1
 chapter: false
 pre: " <b> 5.1.1. </b> "
 ---
 
-#### Mục tiêu kiến trúc
+#### Má»¥c tiÃªu kiáº¿n trÃºc
 
-Kiến trúc Netflop tách ứng dụng web, database, lưu trữ media, xử lý video, phát nội dung và giám sát thành các lớp riêng. Cách tách này giúp hệ thống dễ vận hành hơn, hạn chế việc lưu file lớn trên EC2 và tạo nền tảng để mở rộng về sau.
+Kiáº¿n trÃºc Netflop tÃ¡ch á»©ng dá»¥ng web, database, lÆ°u trá»¯ media, xá»­ lÃ½ video, phÃ¡t ná»™i dung vÃ  giÃ¡m sÃ¡t thÃ nh cÃ¡c lá»›p riÃªng. CÃ¡ch tÃ¡ch nÃ y giÃºp há»‡ thá»‘ng dá»… váº­n hÃ nh hÆ¡n, háº¡n cháº¿ viá»‡c lÆ°u file lá»›n trÃªn EC2 vÃ  táº¡o ná»n táº£ng Ä‘á»ƒ má»Ÿ rá»™ng vá» sau.
 
-#### Luồng truy cập chính
+#### Luá»“ng truy cáº­p chÃ­nh
 
 ```text
 User / Admin
@@ -44,28 +44,28 @@ EC2 netflop-web
         Video Player
 ```
 
-#### Luồng người dùng
+#### Luá»“ng ngÆ°á»i dÃ¹ng
 
-1. Người dùng truy cập `https://netflop.win`.
-2. Cloudflare xử lý DNS và HTTPS phía public domain.
-3. Request được chuyển đến EC2.
-4. Nginx trả frontend React hoặc proxy request `/api/*` đến backend Node.js.
-5. Backend đọc/ghi dữ liệu phim, tài khoản, lịch sử xem, tiếp tục xem, yêu thích, đánh giá và bình luận trong RDS MySQL.
-6. Khi người dùng xem phim, backend cấp phiên stream và trình phát lấy HLS từ CloudFront.
+1. NgÆ°á»i dÃ¹ng truy cáº­p `https://netflop.win`.
+2. Cloudflare xá»­ lÃ½ DNS vÃ  HTTPS phÃ­a public domain.
+3. Request Ä‘Æ°á»£c chuyá»ƒn Ä‘áº¿n EC2.
+4. Nginx tráº£ frontend React hoáº·c proxy request `/api/*` Ä‘áº¿n backend Node.js.
+5. Backend Ä‘á»c/ghi dá»¯ liá»‡u phim, tÃ i khoáº£n, lá»‹ch sá»­ xem, tiáº¿p tá»¥c xem, yÃªu thÃ­ch, Ä‘Ã¡nh giÃ¡ vÃ  bÃ¬nh luáº­n trong RDS MySQL.
+6. Khi ngÆ°á»i dÃ¹ng xem phim, backend cáº¥p phiÃªn stream vÃ  trÃ¬nh phÃ¡t láº¥y HLS tá»« CloudFront.
 
-#### Luồng admin upload video
+#### Luá»“ng admin upload video
 
-1. Admin chọn phim, tập phim và file video MP4/MKV trên trang quản trị.
-2. Backend tạo bản ghi tập phim ở trạng thái đang xử lý.
-3. File gốc được upload lên S3 bucket `netflop-input-source`.
-4. Backend tạo job MediaConvert.
-5. MediaConvert chuyển video sang HLS nhiều độ phân giải: 360p, 480p, 720p và 1080p.
-6. Output HLS được lưu vào S3 bucket `netflop-output-source`.
-7. EventBridge bắt trạng thái MediaConvert và gọi Lambda.
-8. Lambda gọi webhook backend để cập nhật trạng thái tập phim trong database.
-9. Website tự hiển thị trạng thái hoàn thành, không cần admin bấm sync thủ công.
+1. Admin chá»n phim, táº­p phim vÃ  file video MP4/MKV trÃªn trang quáº£n trá»‹.
+2. Backend táº¡o báº£n ghi táº­p phim á»Ÿ tráº¡ng thÃ¡i Ä‘ang xá»­ lÃ½.
+3. File gá»‘c Ä‘Æ°á»£c upload lÃªn S3 bucket `netflop-input-source`.
+4. Backend táº¡o job MediaConvert.
+5. MediaConvert chuyá»ƒn video sang HLS nhiá»u Ä‘á»™ phÃ¢n giáº£i: 360p, 480p, 720p vÃ  1080p.
+6. Output HLS Ä‘Æ°á»£c lÆ°u vÃ o S3 bucket `netflop-output-source`.
+7. EventBridge báº¯t tráº¡ng thÃ¡i MediaConvert vÃ  gá»i Lambda.
+8. Lambda gá»i webhook backend Ä‘á»ƒ cáº­p nháº­t tráº¡ng thÃ¡i táº­p phim trong database.
+9. Website tá»± hiá»ƒn thá»‹ tráº¡ng thÃ¡i hoÃ n thÃ nh, khÃ´ng cáº§n admin báº¥m sync thá»§ cÃ´ng.
 
-#### Luồng tự động cập nhật trạng thái
+#### Luá»“ng tá»± Ä‘á»™ng cáº­p nháº­t tráº¡ng thÃ¡i
 
 ```text
 MediaConvert COMPLETE / ERROR / CANCELED
@@ -83,49 +83,49 @@ Backend webhook /api/uploads/mediaconvert/events
 Update episode upload_status in RDS
 ```
 
-#### Luồng phụ đề
+#### Luá»“ng phá»¥ Ä‘á»
 
 ```text
-Admin upload .srt hoặc .vtt
+Admin upload .srt hoáº·c .vtt
    |
    v
 S3 input/output
    |
    v
-Lambda chuyển .srt sang .vtt nếu cần
+Lambda chuyá»ƒn .srt sang .vtt náº¿u cáº§n
    |
    v
 Video Player load subtitle track
 ```
 
-![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.1-Workshop-overview/5.1.1-architecture/sodo.jpg)
+![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.1-Workshop-overview/5.1.1-architecture/sodo.png)
 
 <!-- NETFLOP_DETAIL_START -->
-#### Cách thực hiện kiến trúc
+#### CÃ¡ch thá»±c hiá»‡n kiáº¿n trÃºc
 
-Kiến trúc được triển khai theo từng lớp:
+Kiáº¿n trÃºc Ä‘Æ°á»£c triá»ƒn khai theo tá»«ng lá»›p:
 
-1. Lớp domain: Cloudflare quản lý DNS của <code>netflop.win</code>.
-2. Lớp application: EC2 chạy Nginx, frontend React build và backend Node.js.
-3. Lớp database: RDS MySQL lưu dữ liệu phim và người dùng.
-4. Lớp media: S3 input lưu video gốc, MediaConvert tạo HLS, S3 output lưu kết quả.
-5. Lớp delivery: CloudFront phân phối HLS và bảo vệ stream bằng signed cookies.
-6. Lớp automation: EventBridge và Lambda cập nhật trạng thái MediaConvert.
-7. Lớp monitoring: CloudWatch và SNS theo dõi hệ thống.
+1. Lá»›p domain: Cloudflare quáº£n lÃ½ DNS cá»§a <code>netflop.win</code>.
+2. Lá»›p application: EC2 cháº¡y Nginx, frontend React build vÃ  backend Node.js.
+3. Lá»›p database: RDS MySQL lÆ°u dá»¯ liá»‡u phim vÃ  ngÆ°á»i dÃ¹ng.
+4. Lá»›p media: S3 input lÆ°u video gá»‘c, MediaConvert táº¡o HLS, S3 output lÆ°u káº¿t quáº£.
+5. Lá»›p delivery: CloudFront phÃ¢n phá»‘i HLS vÃ  báº£o vá»‡ stream báº±ng signed cookies.
+6. Lá»›p automation: EventBridge vÃ  Lambda cáº­p nháº­t tráº¡ng thÃ¡i MediaConvert.
+7. Lá»›p monitoring: CloudWatch vÃ  SNS theo dÃµi há»‡ thá»‘ng.
 
-#### File code liên quan trong source
+#### File code liÃªn quan trong source
 
-| Thành phần | File liên quan |
+| ThÃ nh pháº§n | File liÃªn quan |
 | --- | --- |
-| Kết nối RDS | <code>backend/src/config/database.js</code> |
+| Káº¿t ná»‘i RDS | <code>backend/src/config/database.js</code> |
 | Upload S3 | <code>backend/src/services/awsS3.service.js</code> |
-| Tạo MediaConvert job | <code>backend/src/services/mediaConvert.service.js</code> |
+| Táº¡o MediaConvert job | <code>backend/src/services/mediaConvert.service.js</code> |
 | Webhook MediaConvert | <code>backend/src/controllers/upload.controller.js</code> |
 | Signed cookies | <code>backend/src/services/cloudFrontSignedCookie.service.js</code> |
 | Player HLS | <code>frontend/src/components/VideoPlayer.jsx</code> |
-| Lambda phụ đề | <code>aws/lambda/subtitle-converter/index.mjs</code> |
+| Lambda phá»¥ Ä‘á» | <code>aws/lambda/subtitle-converter/index.mjs</code> |
 
-#### Code mẫu: luồng backend tạo job xử lý video
+#### Code máº«u: luá»“ng backend táº¡o job xá»­ lÃ½ video
 
 ~~~js
 const uploaded = await awsS3Service.uploadVideo(req.file, { movieId, episodeName });
@@ -145,21 +145,21 @@ const job = await mediaConvertService.createHlsJob({
 <!-- NETFLOP_DETAIL_END -->
 
 <!-- NETFLOP_IMPLEMENTATION_START -->
-#### Kiến trúc triển khai theo project Netflop
+#### Kiáº¿n trÃºc triá»ƒn khai theo project Netflop
 
-Kiến trúc hiện tại vẫn là mô hình web truyền thống chạy trên EC2, kết hợp các dịch vụ managed của AWS cho database, media, CDN và monitoring. Backend Node.js không lưu file video lớn trên ổ đĩa EC2, mà chỉ điều phối upload và lưu metadata vào RDS.
+Kiáº¿n trÃºc hiá»‡n táº¡i váº«n lÃ  mÃ´ hÃ¬nh web truyá»n thá»‘ng cháº¡y trÃªn EC2, káº¿t há»£p cÃ¡c dá»‹ch vá»¥ managed cá»§a AWS cho database, media, CDN vÃ  monitoring. Backend Node.js khÃ´ng lÆ°u file video lá»›n trÃªn á»• Ä‘Ä©a EC2, mÃ  chá»‰ Ä‘iá»u phá»‘i upload vÃ  lÆ°u metadata vÃ o RDS.
 
-#### Luồng request chính
+#### Luá»“ng request chÃ­nh
 
-1. Người dùng truy cập <code>netflop.win</code> qua Cloudflare.
-2. Nginx trên EC2 phục vụ frontend React đã build.
-3. Các request <code>/api/*</code> được reverse proxy về Node.js backend chạy bằng PM2.
-4. Backend đọc/ghi dữ liệu phim, người dùng, tập phim, lịch sử xem trong RDS MySQL.
-5. Video admin upload đi vào S3 input bucket.
-6. Backend tạo MediaConvert job để xuất HLS sang S3 output bucket.
-7. Player phát HLS qua CloudFront, có thể bảo vệ bằng signed cookies.
+1. NgÆ°á»i dÃ¹ng truy cáº­p <code>netflop.win</code> qua Cloudflare.
+2. Nginx trÃªn EC2 phá»¥c vá»¥ frontend React Ä‘Ã£ build.
+3. CÃ¡c request <code>/api/*</code> Ä‘Æ°á»£c reverse proxy vá» Node.js backend cháº¡y báº±ng PM2.
+4. Backend Ä‘á»c/ghi dá»¯ liá»‡u phim, ngÆ°á»i dÃ¹ng, táº­p phim, lá»‹ch sá»­ xem trong RDS MySQL.
+5. Video admin upload Ä‘i vÃ o S3 input bucket.
+6. Backend táº¡o MediaConvert job Ä‘á»ƒ xuáº¥t HLS sang S3 output bucket.
+7. Player phÃ¡t HLS qua CloudFront, cÃ³ thá»ƒ báº£o vá»‡ báº±ng signed cookies.
 
-#### Sơ đồ luồng upload và xem phim
+#### SÆ¡ Ä‘á»“ luá»“ng upload vÃ  xem phim
 
 ~~~text
 Admin browser
@@ -172,18 +172,18 @@ Admin browser
   -> Video player
 ~~~
 
-#### File source thể hiện kiến trúc
+#### File source thá»ƒ hiá»‡n kiáº¿n trÃºc
 
-| Mục | File |
+| Má»¥c | File |
 | --- | --- |
-| Khởi tạo server | <code>backend/src/server.js</code> |
-| Route tổng | <code>backend/src/routes/index.js</code> |
-| Kết nối RDS | <code>backend/src/config/database.js</code> |
+| Khá»Ÿi táº¡o server | <code>backend/src/server.js</code> |
+| Route tá»•ng | <code>backend/src/routes/index.js</code> |
+| Káº¿t ná»‘i RDS | <code>backend/src/config/database.js</code> |
 | Upload S3 | <code>backend/src/services/awsS3.service.js</code> |
-| Tạo MediaConvert job | <code>backend/src/services/mediaConvert.service.js</code> |
+| Táº¡o MediaConvert job | <code>backend/src/services/mediaConvert.service.js</code> |
 | Player HLS | <code>frontend/src/components/VideoPlayer.jsx</code> |
 
-#### Code mẫu kết nối database
+#### Code máº«u káº¿t ná»‘i database
 
 ~~~js
 const pool = mysql.createPool({
@@ -202,3 +202,4 @@ pool.execute = pool.query.bind(pool);
 ~~~
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+
