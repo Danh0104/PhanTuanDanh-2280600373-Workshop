@@ -108,12 +108,13 @@ $currentNode := .currentnode }} {{ $currentFileUniqueID := "" }} {{ with
 $currentNode.File }}{{ $currentFileUniqueID = .UniqueID }}{{ end }} {{with
 .sect}} {{if and .IsSection (or (not .Params.hidden) $.showhidden)}} {{safeHTML
 .Params.head}}
+{{ $pageFileUniqueID := "" }}{{ with .File }}{{ $pageFileUniqueID = .UniqueID }}{{ end }}
 <li
   data-nav-id="{{.RelPermalink}}"
   title="{{.Title}}"
   class="dd-item 
         {{if .IsAncestor $currentNode }}parent{{end}}
-        {{if eq .File.UniqueID $currentFileUniqueID}}active{{end}}
+        {{if and $currentFileUniqueID (eq $pageFileUniqueID $currentFileUniqueID)}}active{{end}}
         {{if .Params.alwaysopen}}parent{{end}}
         "
 >
@@ -140,10 +141,11 @@ $currentNode.File }}{{ $currentFileUniqueID = .UniqueID }}{{ end }} {{with
   {{ end }}
 </li>
 {{else}} {{ if not .Params.Hidden }}
+{{ $pageFileUniqueID := "" }}{{ with .File }}{{ $pageFileUniqueID = .UniqueID }}{{ end }}
 <li
   data-nav-id="{{.RelPermalink}}"
   title="{{.Title}}"
-  class="dd-item {{if eq .File.UniqueID $currentFileUniqueID}}active{{end}}"
+  class="dd-item {{if and $currentFileUniqueID (eq $pageFileUniqueID $currentFileUniqueID)}}active{{end}}"
 >
   <a href="{{ .RelPermalink}}">
     {{safeHTML .Params.Pre}}{{or .Params.menuTitle .LinkTitle .Title}}{{safeHTML
