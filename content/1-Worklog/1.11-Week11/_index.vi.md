@@ -1,59 +1,30 @@
 ---
 title: "Worklog Tuần 11"
-date: 2024-01-01
-weight: 2
+date: 2026-06-29
+weight: 1
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 11:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tổng hợp kiến trúc AWS hoàn chỉnh của Netflop.
+* Đánh giá ưu điểm, hạn chế và hướng hoàn thiện hệ thống.
+* Chuẩn bị nội dung cho Proposal, Workshop, Self-evaluation và phần kết luận.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Hoàn thiện sơ đồ kiến trúc chính: User/Admin, Cloudflare, EC2, Nginx, React, Node.js, RDS | 29/06/2026 | 29/06/2026 | Architecture diagram |
+| 3 | Hoàn thiện sơ đồ media pipeline: S3 input, MediaConvert, S3 output, CloudFront và Video Player | 30/06/2026 | 30/06/2026 | Architecture diagram |
+| 4 | Hoàn thiện sơ đồ automation: EventBridge, Lambda notifier, backend webhook và RDS | 01/07/2026 | 01/07/2026 | Architecture diagram |
+| 5 | Bổ sung ghi chú về IAM Role, Systems Manager, CloudWatch, SNS và Cognito cần xác nhận account/region | 02/07/2026 | 02/07/2026 | AWS notes |
+| 6 | Viết phần đánh giá rủi ro: RDS public accessible, phân quyền S3, bảo vệ stream và kiểm soát chi phí | 03/07/2026 | 03/07/2026 | Best practices |
+| 7 - Chủ nhật | Rà soát tính logic giữa Worklog, Proposal, Workshop và Self-evaluation | 04/07/2026 | 05/07/2026 | Báo cáo nháp |
 
 ### Kết quả đạt được tuần 11:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Có bản mô tả kiến trúc AWS tương đối đầy đủ cho web Netflop.
+* Xác định được các điểm mạnh của hệ thống: tách media pipeline, dùng CloudFront, tự động hóa bằng Lambda/EventBridge và có monitoring.
+* Chuẩn bị được phần đề xuất cải thiện bảo mật, chi phí và vận hành.

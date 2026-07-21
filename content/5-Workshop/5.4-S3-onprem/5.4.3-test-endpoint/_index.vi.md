@@ -19,7 +19,7 @@ pre : " <b> 5.4.3 </b> "
 
 2. Click **Start Session**, chọn EC2 instance có tên **Test-Interface-Endpoint**. EC2 instance này đang chạy trên "VPC On-prem" và sẽ được sử dụng để kiểm tra kết nối đến Amazon S3 thông qua Interface endpoint. Session Manager sẽ mở 1 browser tab mới với shell prompt: **sh-4.2 $**
 
-![Start session](/images/5-Workshop/5.4-S3-onprem/start-session.png)
+![Start session](/images/5-Workshop/5.3-S3-vpc/start-session.png)
 
 3. Đi đến ssm-user's home directory với lệnh "cd ~"
 
@@ -28,7 +28,7 @@ pre : " <b> 5.4.3 </b> "
 fallocate -l 1G testfile2.xyz
 ```
 
-![user](/images/5-Workshop/5.4-S3-onprem/cli1.png)
+![user](/images/5-Workshop/5.3-S3-vpc/cli1.png)
 
 5. Copy file vào S3 bucket mình tạo ở section 4.2
 ```

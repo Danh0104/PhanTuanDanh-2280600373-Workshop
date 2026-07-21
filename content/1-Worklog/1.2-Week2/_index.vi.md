@@ -1,59 +1,30 @@
 ---
 title: "Worklog Tuần 2"
-date: 2024-01-01
+date: 2026-04-27
 weight: 1
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 2:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Củng cố kiến thức AWS nền tảng để đọc hiểu kiến trúc Netflop.
+* Xây dựng sơ đồ tổng quan cho luồng người dùng, admin và xử lý media.
+* Nhận diện vai trò của từng dịch vụ AWS trong hệ thống.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Ôn lại các khái niệm cơ bản về Region, Availability Zone, IAM, EC2, RDS, S3 và CloudFront | 27/04/2026 | 27/04/2026 | AWS Documentation |
+| 3 | Vẽ luồng tổng quan User/Admin -> Cloudflare -> EC2/Nginx -> React/Node.js -> RDS MySQL | 28/04/2026 | 28/04/2026 | Tài liệu kiến trúc Netflop |
+| 4 | Phân tích luồng upload video từ admin lên S3 input và tạo job MediaConvert | 29/04/2026 | 29/04/2026 | Ghi chú dự án |
+| 5 | Phân tích luồng phát video HLS từ S3 output qua CloudFront đến video player | 30/04/2026 | 30/04/2026 | AWS Media Services |
+| 6 | Ghi nhận luồng tự động hóa: EventBridge, Lambda notifier, backend webhook và cập nhật trạng thái tập phim | 01/05/2026 | 01/05/2026 | EventBridge/Lambda notes |
+| 7 - Chủ nhật | Tổng hợp sơ đồ kiến trúc mức cao để dùng cho phần Proposal và báo cáo | 02/05/2026 | 03/05/2026 | Draw.io/Markdown notes |
 
 ### Kết quả đạt được tuần 2:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Nắm được kiến trúc tổng quan của Netflop theo cả luồng web chính và luồng media.
+* Hiểu được vì sao hệ thống dùng EC2 cho ứng dụng chính, còn Lambda chỉ xử lý các tác vụ tự động nhỏ.
+* Có bản nháp sơ đồ AWS Architecture đầu tiên cho báo cáo.

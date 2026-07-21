@@ -20,7 +20,7 @@ pre : " <b> 5.4.3 </b> "
 
 2. Click **Start Session**, and select the EC2 instance named **Test-Interface-Endpoint**. This EC2 instance is running in "VPC On-prem" and will be used to test connectivty to Amazon S3 through the Interface endpoint we just created. Session Manager will open a new browser tab with a shell prompt: **sh-4.2 $**
 
-![Start session](/images/5-Workshop/5.4-S3-onprem/start-session.png)
+![Start session](/images/5-Workshop/5.3-S3-vpc/start-session.png)
 
 3. Change to the ssm-user's home directory with command "cd ~"
 
@@ -29,7 +29,7 @@ pre : " <b> 5.4.3 </b> "
 fallocate -l 1G testfile2.xyz
 ```
 
-![user](/images/5-Workshop/5.4-S3-onprem/cli1.png)
+![user](/images/5-Workshop/5.3-S3-vpc/cli1.png)
 
 
 5. Copy file to the same S3 bucket we created in section 3.2

@@ -21,13 +21,13 @@ Trong phần này, bạn sẽ tạo chính sách VPC Endpoint hạn chế quyề
 ```
 aws s3 ls s3://<your-bucket-name>
 ```
-![test](/images/5-Workshop/5.5-Policy/test1.png)
+![test](/images/5-Workshop/5.4-S3-onprem/test1.png)
 
 Nội dung của bucket bao gồm hai tệp có dung lượng 1GB đã được tải lên trước đó.
 
 2. Tạo một bucket S3 mới; tuân thủ mẫu đặt tên mà bạn đã sử dụng trong Phần 1, nhưng thêm '-2' vào tên. Để các trường khác là mặc định và nhấp vào **Create**.
 
-![create bucket](/images/5-Workshop/5.5-Policy/create-bucket.png)
+![create bucket](/images/5-Workshop/5.3-S3-vpc/create-bucket.png)
 
 3. Tạo bucket thành công.
 

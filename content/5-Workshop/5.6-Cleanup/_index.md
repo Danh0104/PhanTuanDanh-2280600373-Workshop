@@ -1,32 +1,46 @@
 ---
-title : "Clean up"
-date : 2024-01-01
-weight : 6
-chapter : false
-pre : " <b> 5.6. </b> "
+title: "Clean up resources"
+date: 2026-07-10
+weight: 6
+chapter: false
+pre: " <b> 5.6. </b> "
 ---
-Congratulations on completing this workshop! 
-In this workshop, you learned architecture patterns for accessing Amazon S3 without using the Public Internet. 
-+ By creating a gateway endpoint, you enabled direct communication between EC2 resources and Amazon S3, without traversing an Internet Gateway. 
-+ By creating an interface endpoint you extended S3 connectivity to resources running in your on-premises data center via AWS Site-to-Site VPN or Direct Connect. 
 
-#### clean up
-1. Navigate to Hosted Zones on the left side of Route 53 console. Click the name of *s3.us-east-1.amazonaws.com* zone. Click Delete and confirm deletion by typing delete. 
+This section explains how to review and clean up AWS resources after the workshop to avoid unnecessary costs.
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
 
-2. Disassociate the Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
+![budget](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.6-Cleanup/5.6.3-cost-check/budget.png)
+![budget](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.6-Cleanup/5.6.3-cost-check/cost.png)
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
 
-4. Open the CloudFormation console  and delete the two CloudFormation Stacks that you created for this lab:
-+ PLOnpremSetup
-+ PLCloudSetup
+#### Contents
 
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
+1. [Clean up application resources](5.6.1-application-resources/)
+2. [Clean up media and automation resources](5.6.2-media-resources/)
+3. [Check cost after cleanup](5.6.3-cost-check/)
 
-5. Delete S3 buckets
-+ Open S3 console
-+ Choose the bucket we created for the lab, click and confirm empty. Click delete and confirm delete.
+<!-- NETFLOP_IMPLEMENTATION_START -->
+#### Cleanup goal
 
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+Cleanup reduces cost after a demo or when the environment is no longer used. Important data should be backed up before deleting resources.
+
+#### Cleanup principles
+
+1. Back up the database before deleting RDS.
+2. Export or keep important videos before deleting S3 objects.
+3. Stop EC2 for temporary breaks; terminate only when no longer needed.
+4. Delete CloudFront last because it must be disabled before deletion.
+5. Check Cost Explorer after cleanup.
+
+#### Suggested cleanup order
+
+~~~text
+Back up RDS
+-> Stop PM2/Nginx if needed
+-> Empty S3 test prefixes
+-> Disable CloudFront test distribution
+-> Delete Lambda/EventBridge test rules
+-> Stop or terminate EC2
+-> Delete RDS snapshot or database only if no longer needed
+~~~
+<!-- NETFLOP_IMPLEMENTATION_END -->

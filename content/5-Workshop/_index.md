@@ -1,31 +1,86 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-10
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# Deploying the Netflop Movie Website on AWS
 
-#### Overview
+This workshop describes the process of deploying the **Netflop** movie streaming website to AWS. The content follows the current system flow: users access the `netflop.win` domain, the frontend and backend run on EC2, data is stored in RDS MySQL, media is stored on S3, videos are transcoded with AWS Elemental MediaConvert, and playback is delivered through CloudFront.
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+The goal of this chapter is to present how to build a movie streaming system capable of uploading large videos, automatically converting them to HLS at multiple resolutions, delivering video through a CDN, storing watch history by account, supporting subtitles, and monitoring operational status with CloudWatch.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+#### Contents
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+1. [Workshop overview](5.1-Workshop-overview/)
+2. [Prerequisites](5.2-Prerequisite/)
+3. [Create AWS infrastructure](5.3-AWS-infrastructure/)
+4. [Configure storage, database, and media processing](5.4-Storage-database/)
+5. [Deploy and test the application](5.5-Deploy-test/)
+6. [Clean up resources](5.6-Cleanup/)
 
-#### Content
+<!-- NETFLOP_IMPLEMENTATION_START -->
+#### Practical implementation scope
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+This workshop section documents how the Netflop movie streaming website was moved from local development to AWS. The content follows a hands-on structure: infrastructure setup, application deployment, video processing, stream protection, subtitle handling, monitoring, and cleanup.
+
+The sample code snippets are shortened from the current Netflop source code. Sensitive values such as database passwords, AWS access keys, OAuth client secrets, JWT secrets, and CloudFront private keys must not be copied into the report.
+
+#### Recommended structure for each feature
+
+1. State the purpose of the feature.
+2. List the AWS services or application modules involved.
+3. Describe the implementation steps in AWS Console or CLI.
+4. Explain the processing flow in the source code.
+5. Include a short code sample from the project.
+6. Add test results and screenshots required for evidence.
+
+#### Main features covered in the workshop
+
+| Group | Implemented feature | Evidence to include |
+| --- | --- | --- |
+| Infrastructure | EC2, Nginx, PM2, RDS, Security Groups | Website loads and API health check works |
+| Media storage | S3 input/output, CloudFront | Source video in input bucket, HLS in output bucket |
+| Video processing | MediaConvert, EventBridge, Lambda notifier | Job COMPLETE and episode status updates automatically |
+| Subtitles | VTT/SRT upload, Lambda SRT to VTT converter | Subtitle track is visible in the player |
+| Stream security | CloudFront signed cookies | HLS plays through CloudFront with temporary cookies |
+| Operations | CloudWatch, SNS, Cost Explorer | Alarm, logs, dashboard, or cost screenshots |
+
+### Demo Stream
+
+<div class="netflop-demo-player">
+  <video id="netflop-demo-video-en" controls playsinline preload="metadata" style="width:100%;max-width:960px;background:#000;border-radius:8px;"></video>
+  <p id="netflop-demo-status-en">
+    <a href="https://customer-mq3bsojkqgoa0nyg.cloudflarestream.com/8bc4e084d7f19b8303da087366e0fe91/manifest/video.m3u8">Open HLS demo stream</a>
+  </p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
+<script>
+(function () {
+  const source = "https://customer-mq3bsojkqgoa0nyg.cloudflarestream.com/8bc4e084d7f19b8303da087366e0fe91/manifest/video.m3u8";
+  const video = document.getElementById("netflop-demo-video-en");
+  const status = document.getElementById("netflop-demo-status-en");
+  if (!video) return;
+
+  if (video.canPlayType("application/vnd.apple.mpegurl")) {
+    video.src = source;
+    return;
+  }
+
+  if (window.Hls && window.Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource(source);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.ERROR, function () {
+      if (status) status.textContent = "The HLS demo stream could not be loaded in this browser.";
+    });
+    return;
+  }
+
+  if (status) status.textContent = "This browser does not support HLS playback.";
+})();
+</script>
+<!-- NETFLOP_IMPLEMENTATION_END -->

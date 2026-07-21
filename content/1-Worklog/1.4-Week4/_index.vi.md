@@ -1,59 +1,30 @@
 ---
 title: "Worklog Tuần 4"
-date: 2024-01-01
+date: 2026-05-11
 weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Phân tích hạ tầng chạy ứng dụng chính trên EC2.
+* Tìm hiểu vai trò của Nginx, Cloudflare domain và security group.
+* Ghi nhận các điểm cần cải thiện về bảo mật triển khai.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Ghi nhận thông tin EC2 netflop-web, instance type t3.micro, public IP và security group | 11/05/2026 | 11/05/2026 | AWS Console notes |
+| 3 | Tìm hiểu cách Nginx reverse proxy phục vụ React frontend và chuyển tiếp request đến Node.js backend | 12/05/2026 | 12/05/2026 | Nginx config notes |
+| 4 | Kiểm tra vai trò Cloudflare trong DNS, HTTPS và truy cập qua domain netflop.win | 13/05/2026 | 13/05/2026 | Cloudflare notes |
+| 5 | Rà soát các cổng cần mở cho web, SSH/deploy và kết nối backend với RDS | 14/05/2026 | 14/05/2026 | Security Group |
+| 6 | Tìm hiểu cách deploy/reload EC2 bằng AWS Systems Manager từ local AWS CLI | 15/05/2026 | 15/05/2026 | SSM notes |
+| 7 - Chủ nhật | Ghi nhận rủi ro: RDS public accessible và đề xuất giới hạn security group chỉ cho EC2 truy cập | 16/05/2026 | 17/05/2026 | Best practices |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Mô tả được vai trò của EC2 là nơi chạy ứng dụng chính, gồm frontend build, backend Node.js và Nginx.
+* Hiểu được Cloudflare đang xử lý domain và HTTPS phía người dùng.
+* Ghi nhận được các điểm cải thiện bảo mật để đưa vào phần đánh giá cuối báo cáo.

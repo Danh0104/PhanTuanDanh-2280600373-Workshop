@@ -1,59 +1,30 @@
 ---
 title: "Worklog Tuần 1"
-date: 2024-01-01
+date: 2026-04-20
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 1:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Làm quen với mục tiêu thực tập, yêu cầu báo cáo và cấu trúc template FCJ.
+* Khảo sát bước đầu dự án Netflop để xác định phạm vi nghiên cứu.
+* Lập kế hoạch 12 tuần cho quá trình tìm hiểu, triển khai và viết báo cáo.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Đọc cấu trúc template báo cáo gồm Worklog, Proposal, Blog, Event, Workshop, Self-evaluation và Feedback | 20/04/2026 | 20/04/2026 | FCJ workshop template |
+| 3 | Khảo sát website Netflop ở mức người dùng: đăng nhập, xem danh sách phim, xem chi tiết phim, phát video | 21/04/2026 | 21/04/2026 | Website Netflop |
+| 4 | Ghi nhận các nhóm chức năng chính: người dùng, admin, phim, tập phim, phụ đề, lịch sử xem, yêu thích, đánh giá và bình luận | 22/04/2026 | 22/04/2026 | Ghi chú dự án |
+| 5 | Xác định phạm vi báo cáo tập trung vào kiến trúc AWS đang phục vụ hệ thống Netflop | 23/04/2026 | 23/04/2026 | Tài liệu kiến trúc |
+| 6 | Lập danh sách dịch vụ cần tìm hiểu: EC2, RDS, S3, MediaConvert, CloudFront, Lambda, EventBridge, CloudWatch, SNS, IAM | 24/04/2026 | 24/04/2026 | AWS Documentation |
+| 7 - Chủ nhật | Phác thảo kế hoạch thực tập 12 tuần và phân chia giai đoạn học tập, triển khai, kiểm thử, hoàn thiện báo cáo | 25/04/2026 | 26/04/2026 | Worklog cá nhân |
 
 ### Kết quả đạt được tuần 1:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hiểu được định hướng báo cáo là mô tả quá trình tham gia dự án Netflop trên AWS thay vì chỉ làm một bài lab riêng lẻ.
+* Xác định được các thành phần hệ thống cần đưa vào báo cáo: web app, backend API, database, media pipeline và monitoring.
+* Có kế hoạch 12 tuần rõ ràng để theo dõi tiến độ thực tập.

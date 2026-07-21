@@ -1,0 +1,206 @@
+---
+title: "Kiểm thử admin upload video"
+date: 2026-07-10
+weight: 3
+chapter: false
+pre: " <b> 5.5.3. </b> "
+---
+
+#### Mục tiêu
+
+Kiểm thử toàn bộ pipeline admin upload video, từ lúc chọn file đến khi video được convert sang HLS và tập phim chuyển sang trạng thái hoàn thành.
+
+#### Luồng kiểm thử
+
+1. Admin đăng nhập vào trang quản trị.
+2. Vào phần quản lý phim hoặc quản lý tập phim.
+3. Chọn phim/tập cần upload.
+4. Chọn video MP4/MKV.
+5. Chọn banner tập nếu có.
+6. Bấm tải video.
+7. Frontend hiển thị thanh tiến trình upload.
+8. File gốc được upload lên `netflop-input-source`.
+9. Backend tạo MediaConvert job.
+10. Giao diện chuyển sang trạng thái đang xử lý.
+11. MediaConvert xuất HLS sang `netflop-output-source`.
+12. EventBridge nhận trạng thái COMPLETE.
+13. Lambda `netflop-mediaconvert-notifier` gọi webhook backend.
+14. Backend cập nhật tập phim sang `ready`.
+15. Trang admin tự cập nhật trạng thái hoàn thành, không cần bấm sync thủ công.
+
+#### Dữ liệu backend cần lưu
+
+| Trường | Ý nghĩa |
+| --- | --- |
+| `jobId` | ID job MediaConvert |
+| `source_url` | Vị trí video gốc trên S3 input |
+| `hls_url` | URL manifest HLS output |
+| `cloudfront_url` | URL phát qua CloudFront |
+| `upload_status` | Trạng thái xử lý |
+| `duration` | Thời lượng video nếu có |
+| `episode_banner` | Banner riêng của tập |
+
+#### Kiểm thử file lớn
+
+Với video khoảng 5GB, cần xác nhận:
+
+* Không upload qua request backend thông thường gây lỗi `413 Request Entity Too Large`.
+* Upload dùng S3/multipart hoặc cơ chế phù hợp cho file lớn.
+* Thanh tiến trình phản ánh được upload progress.
+* Sau upload, trạng thái chuyển sang MediaConvert processing.
+
+#### Kết quả mong đợi
+
+* S3 input có video gốc.
+* MediaConvert job hoàn tất.
+* S3 output có file `.m3u8` và segment.
+* Database cập nhật trạng thái tập phim.
+* Người dùng phát được video qua CloudFront.
+* Admin nhìn thấy tiến trình và kết quả hoàn thành ngay trên UI.
+
+![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.5-Deploy-test/5.5.3-admin-upload-video/adminin1.png)
+![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.5-Deploy-test/5.5.3-admin-upload-video/adminput1.png)
+![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.5-Deploy-test/5.5.3-admin-upload-video/adminup1.png)
+![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.5-Deploy-test/5.5.3-admin-upload-video/adminup2.png)
+![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.5-Deploy-test/5.5.3-admin-upload-video/adminup3.png)
+
+<!-- NETFLOP_DETAIL_START -->
+#### Cách thực hiện upload tập phim trong admin
+
+Frontend admin dùng multipart upload để xử lý file lớn. Khi upload xong, backend tạo bản ghi tập phim và gửi MediaConvert xử lý HLS.
+
+#### Code mẫu frontend gọi upload multipart
+
+~~~js
+const payload = await uploadVideoInChunks({
+  file,
+  movieId,
+  episodeName,
+  thumbnailUrl,
+  duration,
+  onProgress: setUploadProgress
+});
+
+setUploadProgress(100);
+setMessage('Đã upload video lên S3 và gửi MediaConvert xử lý HLS.');
+~~~
+
+#### Code mẫu API upload
+
+~~~js
+export const uploadApi = {
+  startVideoMultipart: (payload) => axiosClient.post('/uploads/videos/multipart/start', payload),
+  uploadVideoMultipartPart: (formData, options = {}) => axiosClient.post(
+    '/uploads/videos/multipart/parts',
+    formData,
+    { headers: { 'Content-Type': 'multipart/form-data' }, onUploadProgress: options.onUploadProgress }
+  ),
+  completeVideoMultipart: (payload) => axiosClient.post('/uploads/videos/multipart/complete', payload)
+};
+~~~
+
+#### Code mẫu backend sau khi complete multipart
+
+~~~js
+const uploaded = await awsS3Service.completeVideoMultipartUpload({ key, uploadId, parts });
+const pendingEpisode = await episodeModel.createUploadEpisode({
+  movieId,
+  name: episodeName,
+  sourceUrl: uploaded.s3Uri,
+  uploadStatus: 'uploaded'
+});
+
+const job = await mediaConvertService.createHlsJob({
+  inputS3Uri: uploaded.s3Uri,
+  movieId,
+  episodeId: pendingEpisode.MaTap
+});
+~~~
+
+#### Kịch bản test admin
+
+1. Chọn phim và nhập tên tập.
+2. Chọn video MP4/MKV.
+3. Theo dõi thanh upload progress.
+4. Kiểm tra S3 input có file gốc.
+5. Kiểm tra MediaConvert job SUBMITTED/PROGRESSING/COMPLETE.
+6. Kiểm tra bảng tập phim chuyển sang ready.
+7. Mở web người dùng và phát tập vừa upload.
+<!-- NETFLOP_DETAIL_END -->
+
+<!-- NETFLOP_IMPLEMENTATION_START -->
+#### Kiểm thử admin upload tập phim
+
+Đây là chức năng quan trọng nhất của workshop vì kết hợp frontend, backend, S3, MediaConvert, Lambda và CloudFront.
+
+#### Các bước thao tác trên giao diện
+
+1. Đăng nhập bằng tài khoản admin.
+2. Vào trang quản lý tập phim hoặc phần Video & Trailer trong thêm/sửa phim.
+3. Nhập ID phim, tên tập, banner tập nếu có.
+4. Chọn file MP4/MKV.
+5. Bấm tải video.
+6. Theo dõi thanh tiến trình upload multipart.
+7. Sau khi upload xong, trạng thái chuyển sang MediaConvert processing.
+8. Khi job hoàn tất, trạng thái tập phim là đã hoàn thành/ready.
+9. Mở trang watch để phát tập mới.
+
+#### Code frontend upload theo chunk
+
+~~~js
+for (let offset = 0, partNumber = 1; offset < file.size; offset += CHUNK_SIZE, partNumber += 1) {
+  const end = Math.min(offset + CHUNK_SIZE, file.size);
+  const chunk = file.slice(offset, end);
+  const formData = new FormData();
+  formData.append('key', uploadSession.key);
+  formData.append('uploadId', uploadSession.uploadId);
+  formData.append('partNumber', String(partNumber));
+  formData.append('chunk', chunk, file.name);
+
+  const response = await uploadPartWithRetry(formData, {
+    onUploadProgress: (event) => {
+      const percent = ((uploadedBytes + event.loaded) / file.size) * 100;
+      onProgress(Math.min(99, Math.max(1, percent)));
+    }
+  });
+}
+~~~
+
+#### Code backend complete multipart và tạo job
+
+~~~js
+const uploaded = await awsS3Service.completeVideoMultipartUpload({ key, uploadId, parts });
+
+const pendingEpisode = await episodeModel.createUploadEpisode({
+  movieId,
+  name: episodeName,
+  sourceUrl: uploaded.s3Uri,
+  uploadStatus: 'uploaded'
+});
+
+const job = await mediaConvertService.createHlsJob({
+  inputS3Uri: uploaded.s3Uri,
+  movieId,
+  episodeId: pendingEpisode.MaTap
+});
+~~~
+
+#### Vì sao không cần bấm Sync thủ công
+
+MediaConvert phát sự kiện trạng thái qua EventBridge. Lambda <code>netflop-mediaconvert-notifier</code> nhận event rồi gọi webhook backend <code>/api/uploads/mediaconvert/events</code>. Backend dựa vào jobId/episodeId để cập nhật trạng thái tập phim.
+
+#### Code Lambda notifier
+
+~~~js
+const response = await fetch(webhookUrl, {
+  method: 'POST',
+  headers: {
+    'content-type': 'application/json',
+    'x-netflop-event-secret': secret
+  },
+  body: JSON.stringify(event)
+});
+~~~
+
+
+<!-- NETFLOP_IMPLEMENTATION_END -->

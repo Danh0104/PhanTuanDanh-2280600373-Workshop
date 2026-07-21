@@ -1,57 +1,30 @@
 ---
 title: "Week 1 Worklog"
-date: 2024-01-01
+date: 2026-04-20
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 1 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand the internship goals, report requirements, and FCJ template structure.
+* Survey the Netflop project at a high level to define the report scope.
+* Prepare a 12-week plan for learning, implementation review, testing, and documentation.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| Monday | Review the report template structure: Worklog, Proposal, Blog, Event, Workshop, Self-evaluation, and Feedback | 04/20/2026 | 04/20/2026 | FCJ workshop template |
+| Tuesday | Survey the Netflop website as a user: login, movie list, movie detail, and video playback | 04/21/2026 | 04/21/2026 | Netflop website |
+| Wednesday | List the main feature groups: user, admin, movies, episodes, subtitles, watch history, favorites, ratings, and comments | 04/22/2026 | 04/22/2026 | Project notes |
+| Thursday | Define the report scope around the AWS architecture currently serving Netflop | 04/23/2026 | 04/23/2026 | Architecture notes |
+| Friday | Identify AWS services to study: EC2, RDS, S3, MediaConvert, CloudFront, Lambda, EventBridge, CloudWatch, SNS, and IAM | 04/24/2026 | 04/24/2026 | AWS Documentation |
+| Saturday - Sunday | Draft the 12-week internship plan and divide the work into learning, analysis, testing, and reporting stages | 04/25/2026 | 04/26/2026 | Personal worklog |
 
 ### Week 1 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Understood that the report should describe my participation in the Netflop AWS project instead of only documenting a standalone lab.
+* Identified the main system areas for the report: web app, backend API, database, media pipeline, and monitoring.
+* Prepared a clear 12-week plan to track internship progress.

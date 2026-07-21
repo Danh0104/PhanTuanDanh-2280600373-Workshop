@@ -1,47 +1,56 @@
 ---
 title: "Sharing and Feedback"
-date: 2024-01-01
+date: 2026-07-11
 weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud AI Journey program. This will help the FCAJ team improve any shortcomings based on the following aspects:
+After participating in the **First Cloud AI Journey** program and completing my internship report on the AWS architecture of the **Netflop** system, I would like to share some feedback based on my learning, documentation work, and community event experience.
 
 ### Overall Evaluation
 
-**1. Working Environment**  
-The working environment is very friendly and open. FCAJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+**1. Program content**
 
-**2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
+The program helped me approach AWS through a structured learning path, from foundational services to more advanced topics such as DevOps, AI Agents, Amazon Q, and system security. Combining self-study, report writing, event participation, and real project analysis helped me understand the knowledge better than only reading documentation.
 
-**3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
+**2. Suitability for interns**
 
-**4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
+The content is suitable for Information Technology students because it includes both fundamentals and opportunities to apply knowledge to a project. While working on the Netflop report, I was able to connect AWS knowledge with a real system using EC2, RDS, S3, MediaConvert, CloudFront, Lambda, EventBridge, and CloudWatch.
 
-**5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
+**3. Technical learning opportunities**
 
-**6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+During the internship, I learned how to look at a cloud system through multiple layers: application, database, storage, media processing, CDN, automation, monitoring, and security. This was valuable because it showed me that deploying a website is not only about writing code; it also requires operations, protection, observability, and optimization.
 
----
+**4. Community activities and events**
 
-### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+The **FCAJ Community Day - AI Agents and DevOps** event was a memorable highlight. Sessions about AI Agents, Amazon Q, AWS DevOps Agent, Voice AI, and Secure Private MCP gave me a new perspective on the future of Cloud/DevOps. The event atmosphere was open and practical, with many real examples that motivated me to keep learning.
 
----
+**5. Support from mentors and the community**
 
-### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+I appreciate the support from mentors and the FCAJ community. When I faced difficult topics, I could refer to materials, ask questions, and learn from how others explained technical concepts. This made me more confident while learning AWS and preparing the report.
+
+### What I Was Most Satisfied With
+
+What I appreciated most was the opportunity to study a real architecture instead of only completing a simple lab. By analyzing Netflop, I understood the role of each AWS service and how they work together to serve end users. In particular, the video processing flow using S3, MediaConvert, and CloudFront helped me see how AWS can be applied in a real movie streaming website.
+
+### Challenges
+
+* Some services such as MediaConvert, CloudFront signed cookies, EventBridge, and Lambda triggers were new to me and required more time to understand correctly.
+* Turning technical information into a clear report was challenging, especially when explaining both the overall architecture and detailed workflows.
+* Security-related topics such as IAM, private access, RDS security groups, and Cognito required careful checking to avoid inaccurate descriptions.
+
+### Suggestions For Improvement
+
+* Provide more sample reports for different directions such as web applications, data pipelines, DevOps automation, or AI applications.
+* Provide an end-of-program checklist for each report section: Worklog, Proposal, Blog, Event, Workshop, Self-evaluation, and Feedback.
+* Add a session on drawing AWS Architecture Diagrams and explaining architecture through user flows.
+* If possible, include a short mid-term review so students can confirm whether their report is going in the right direction.
+
+### Expectations After The Program
+
+After the program, I hope to continue joining activities related to AWS, DevOps, AI Agents, and cloud security. I also want more hands-on practice with CI/CD, Infrastructure as Code, monitoring, and production deployment patterns to develop my Cloud Engineer skills.
+
+### Appreciation
+
+I would like to thank the First Cloud AI Journey program, mentors, and community for supporting my learning, practice, and internship report completion. The program helped me gain a clearer direction in Cloud/DevOps and understand the importance of combining learning with real system analysis.

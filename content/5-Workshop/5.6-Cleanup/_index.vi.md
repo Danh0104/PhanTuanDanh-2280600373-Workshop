@@ -1,37 +1,55 @@
 ---
-title : "Dọn dẹp tài nguyên"
-date : 2024-01-01
-weight : 6
-chapter : false
-pre : " <b> 5.6. </b> "
+title: "Dọn dẹp tài nguyên"
+date: 2026-07-10
+weight: 6
+chapter: false
+pre: " <b> 5.6. </b> "
 ---
 
-#### Dọn dẹp tài nguyên
+Phần cleanup dùng để kiểm tra và dọn các tài nguyên không còn sử dụng sau khi hoàn thành workshop hoặc demo. Với website xem phim, cần đặc biệt chú ý S3 và MediaConvert vì video dung lượng lớn có thể tạo chi phí lưu trữ và xử lý đáng kể.
+![budget](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.6-Cleanup/5.6.3-cost-check/budget.png)
+![budget](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.6-Cleanup/5.6.3-cost-check/cost.png)
 
-Xin chúc mừng bạn đã hoàn thành xong lab này!
-Trong lab này, bạn đã học về các mô hình kiến trúc để truy cập Amazon S3 mà không sử dụng Public Internet.
 
-+ Bằng cách tạo Gateway endpoint, bạn đã cho phép giao tiếp trực tiếp giữa các tài nguyên EC2 và Amazon S3, mà không đi qua Internet Gateway.
-Bằng cách tạo Interface endpoint, bạn đã mở rộng kết nối S3 đến các tài nguyên chạy trên trung tâm dữ liệu trên chỗ của bạn thông qua AWS Site-to-Site VPN hoặc Direct Connect.
+#### Nội dung
 
-#### Dọn dẹp
-1. Điều hướng đến Hosted Zones trên phía trái của bảng điều khiển Route 53. Nhấp vào tên của  s3.us-east-1.amazonaws.com zone. Nhấp vào Delete và xác nhận việc xóa bằng cách nhập từ khóa "delete".
+1. [Dọn dẹp tài nguyên ứng dụng](5.6.1-application-resources/)
+2. [Dọn dẹp tài nguyên media và automation](5.6.2-media-resources/)
+3. [Kiểm tra chi phí sau cleanup](5.6.3-cost-check/)
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
+<!-- NETFLOP_DETAIL_START -->
+#### Nguyên tắc cleanup
 
-2. Disassociate Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
+Không xóa tài nguyên production khi website còn chạy. Cleanup trong báo cáo nên chia thành hai loại:
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
+1. Tài nguyên demo/test có thể xóa ngay.
+2. Tài nguyên production chỉ kiểm tra, backup và tối ưu chi phí.
 
-4.Mở console của CloudFormation và xóa hai stack CloudFormation mà bạn đã tạo cho bài thực hành này:
-+ PLOnpremSetup
-+ PLCloudSetup
+Với Netflop, tài nguyên cần cẩn thận nhất là RDS và S3 output vì chúng chứa dữ liệu chính và media đang được website sử dụng.
+<!-- NETFLOP_DETAIL_END -->
 
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
+<!-- NETFLOP_IMPLEMENTATION_START -->
+#### Mục tiêu cleanup
 
-5. Xóa các S3 bucket
+Cleanup dùng để giảm chi phí sau khi demo hoặc khi không còn sử dụng môi trường. Không nên xóa tài nguyên khi chưa backup dữ liệu quan trọng.
 
-+ Mở bảng điều khiển S3
-+ Chọn bucket chúng ta đã tạo cho lab, nhấp chuột và xác nhận là empty. Nhấp Delete và xác nhận delete.
-+ 
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+#### Nguyên tắc dọn dẹp
+
+1. Backup database trước khi xóa RDS.
+2. Export hoặc giữ lại video quan trọng trước khi xóa S3.
+3. Tắt EC2 nếu chỉ nghỉ tạm thời, terminate nếu không dùng nữa.
+4. Xóa CloudFront sau cùng vì cần disable trước khi delete.
+5. Kiểm tra Cost Explorer sau khi cleanup.
+
+#### Thứ tự đề xuất
+
+~~~text
+Backup RDS
+-> Stop PM2/Nginx nếu cần
+-> Empty S3 test prefixes
+-> Disable CloudFront test distribution
+-> Delete Lambda/EventBridge test rules
+-> Stop/terminate EC2
+-> Delete RDS snapshot hoặc DB nếu không dùng
+~~~
+<!-- NETFLOP_IMPLEMENTATION_END -->

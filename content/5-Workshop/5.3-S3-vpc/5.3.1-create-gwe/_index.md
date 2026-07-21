@@ -37,4 +37,4 @@ You will see **6 existing VPC endpoints** that support **AWS Systems Manager (SS
 + Do not add a tag to the VPC endpoint at this time.
 + Click **Create endpoint**, then click x after receiving a successful creation message.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+![endpoint](/images/5-Workshop/5.2-Prerequisite/complete.png)
