@@ -1,4 +1,4 @@
----
+﻿---
 title : "Tạo một Gateway Endpoint"
 date : 2024-01-01 
 weight : 1
@@ -38,3 +38,4 @@ Bạn sẽ thấy 6 điểm cuối VPC hiện có hỗ trợ AWS Systems Manager
 + Click Create endpoint, click x sau khi nhận được thông báo tạo thành công.
 
 ![endpoint](/images/5-Workshop/5.2-Prerequisite/complete.png)
+

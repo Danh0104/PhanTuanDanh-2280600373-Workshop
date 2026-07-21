@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 9"
 date: 2026-06-15
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.9. </b> "
 * Hiểu được cách hệ thống hỗ trợ cả phụ đề VTT trực tiếp và SRT cần chuyển đổi.
 * Mô tả được vai trò của Lambda subtitle converter trong việc giảm thao tác thủ công cho admin.
 * Hoàn thiện nội dung về quản lý ảnh, avatar và phụ đề trong báo cáo.
+

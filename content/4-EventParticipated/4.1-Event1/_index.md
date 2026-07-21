@@ -125,3 +125,5 @@ The secure private MCP session also helped me realize that enterprise AI is not 
 
 ![AWS DevOps Agent resource slide at FCAJ Community Day](/images/events/fcaj-devops-agent-resources.png)
 
+![VPC Connection session during FCAJ Community Day](/images/events/fcaj-vpc-connection-session.png)
+

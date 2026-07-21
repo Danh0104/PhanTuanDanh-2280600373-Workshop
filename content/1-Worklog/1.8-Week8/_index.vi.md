@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 8"
 date: 2026-06-08
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.8. </b> "
 * Mô tả được chuỗi MediaConvert -> EventBridge -> Lambda -> Backend webhook -> RDS.
 * Hiểu được vai trò Lambda trong hệ thống là xử lý tác vụ nhỏ, không thay thế backend chính.
 * Hoàn thiện phần tự động hóa trạng thái video trong báo cáo.
+

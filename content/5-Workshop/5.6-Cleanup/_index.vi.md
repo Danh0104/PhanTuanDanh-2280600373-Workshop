@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dọn dẹp tài nguyên"
 date: 2026-07-10
 weight: 6
@@ -53,3 +53,4 @@ Backup RDS
 -> Delete RDS snapshot hoặc DB nếu không dùng
 ~~~
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

@@ -7,36 +7,37 @@ pre: " <b> 3.1. </b> "
 ---
 ![So sanh FFmpeg tren EC2 voi AWS Elemental MediaConvert](/images/3-BlogsPosted/3.1-Blog1/ffmpeg-vs-mediaconvert.png)
 
-BÃ i 1: Táº¡i sao nhÃ³m mÃ¬nh chá»n AWS Elemental MediaConvert thay vÃ¬ FFmpeg?
+Bài 1: Tại sao nhóm mình chọn AWS Elemental MediaConvert thay vì FFmpeg?
 
-Xin chÃ o má»i ngÆ°á»i,
+Xin chào mọi người,
 
-Trong quÃ¡ trÃ¬nh thá»±c hiá»‡n dá»± Ã¡n **Netflop - Website xem phim trÃªn ná»n táº£ng AWS**, nhÃ³m mÃ¬nh Ä‘Ã£ cÃ³ cÆ¡ há»™i tÃ¬m hiá»ƒu vÃ  triá»ƒn khai nhiá»u dá»‹ch vá»¥ AWS Ä‘á»ƒ xÃ¢y dá»±ng má»™t media pipeline hoÃ n chá»‰nh. Má»™t trong nhá»¯ng quyáº¿t Ä‘á»‹nh khiáº¿n nhÃ³m máº¥t khÃ¡ nhiá»u thá»i gian Ä‘á»ƒ cÃ¢n nháº¯c lÃ  lá»±a chá»n giáº£i phÃ¡p encode video.
+Trong quá trình thực hiện dự án **Netflop - Website xem phim trên nền tảng AWS**, nhóm mình đã có cơ hội tìm hiểu và triển khai nhiều dịch vụ AWS để xây dựng một media pipeline hoàn chỉnh. Một trong những quyết định khiến nhóm mất khá nhiều thời gian để cân nhắc là lựa chọn giải pháp encode video.
 
-Ban Ä‘áº§u, nhÃ³m dá»± Ä‘á»‹nh sá»­ dá»¥ng **FFmpeg cháº¡y trá»±c tiáº¿p trÃªn Amazon EC2** Ä‘á»ƒ chuyá»ƒn Ä‘á»•i video sau khi upload. Tuy nhiÃªn, sau khi thá»­ nghiá»‡m vá»›i nhiá»u video cÃ³ dung lÆ°á»£ng lá»›n, CPU cá»§a EC2 thÆ°á»ng xuyÃªn hoáº¡t Ä‘á»™ng á»Ÿ má»©c cao, thá»i gian xá»­ lÃ½ kÃ©o dÃ i vÃ  viá»‡c quáº£n lÃ½ nhiá»u tÃ¡c vá»¥ encode Ä‘á»“ng thá»i trá»Ÿ nÃªn khÃ¡ phá»©c táº¡p.
+Ban đầu, nhóm dự định sử dụng **FFmpeg chạy trực tiếp trên Amazon EC2** để chuyển đổi video sau khi upload. Tuy nhiên, sau khi thử nghiệm với nhiều video có dung lượng lớn, CPU của EC2 thường xuyên hoạt động ở mức cao, thời gian xử lý kéo dài và việc quản lý nhiều tác vụ encode đồng thời trở nên khá phức tạp.
 
-Sau khi tÃ¬m hiá»ƒu thÃªm, nhÃ³m quyáº¿t Ä‘á»‹nh chuyá»ƒn sang sá»­ dá»¥ng **AWS Elemental MediaConvert**, káº¿t há»£p vá»›i **Amazon S3, Amazon CloudFront, Amazon EventBridge vÃ  AWS Lambda** Ä‘á»ƒ xÃ¢y dá»±ng quy trÃ¬nh xá»­ lÃ½ video tá»± Ä‘á»™ng.
+Sau khi tìm hiểu thêm, nhóm quyết định chuyển sang sử dụng **AWS Elemental MediaConvert**, kết hợp với **Amazon S3, Amazon CloudFront, Amazon EventBridge và AWS Lambda** để xây dựng quy trình xử lý video tự động.
 
-Sau má»™t thá»i gian triá»ƒn khai, nhÃ³m nháº­n tháº¥y má»™t sá»‘ lá»£i Ã­ch rÃµ rá»‡t:
+Sau một thời gian triển khai, nhóm nhận thấy một số lợi ích rõ rệt:
 
-âœ… Tá»± Ä‘á»™ng chuyá»ƒn Ä‘á»•i video sang chuáº©n **HLS** vá»›i nhiá»u cháº¥t lÆ°á»£ng (360p, 480p, 720p, 1080p).
+✅ Tự động chuyển đổi video sang chuẩn **HLS** với nhiều chất lượng (360p, 480p, 720p, 1080p).
 
-âœ… Giáº£m táº£i Ä‘Ã¡ng ká»ƒ cho EC2 vÃ¬ toÃ n bá»™ quÃ¡ trÃ¬nh encode Ä‘Æ°á»£c thá»±c hiá»‡n bá»Ÿi MediaConvert.
+✅ Giảm tải đáng kể cho EC2 vì toàn bộ quá trình encode được thực hiện bởi MediaConvert.
 
-âœ… Tá»± Ä‘á»™ng cáº­p nháº­t tráº¡ng thÃ¡i phim sau khi encode hoÃ n táº¥t thÃ´ng qua **EventBridge + Lambda**.
+✅ Tự động cập nhật trạng thái phim sau khi encode hoàn tất thông qua **EventBridge + Lambda**.
 
-âœ… Kiáº¿n trÃºc dá»… má»Ÿ rá»™ng khi sá»‘ lÆ°á»£ng video hoáº·c ngÆ°á»i dÃ¹ng tÄƒng lÃªn.
+✅ Kiến trúc dễ mở rộng khi số lượng video hoặc người dùng tăng lên.
 
-Qua dá»± Ã¡n nÃ y, nhÃ³m mÃ¬nh nháº­n ra ráº±ng viá»‡c sá»­ dá»¥ng cÃ¡c **Managed Services** cá»§a AWS khÃ´ng chá»‰ giÃºp giáº£m khá»‘i lÆ°á»£ng váº­n hÃ nh mÃ  cÃ²n giÃºp há»‡ thá»‘ng á»•n Ä‘á»‹nh vÃ  dá»… má»Ÿ rá»™ng hÆ¡n so vá»›i viá»‡c tá»± triá»ƒn khai má»i thá»© trÃªn mÃ¡y chá»§.
+Qua dự án này, nhóm mình nhận ra rằng việc sử dụng các **Managed Services** của AWS không chỉ giúp giảm khối lượng vận hành mà còn giúp hệ thống ổn định và dễ mở rộng hơn so với việc tự triển khai mọi thứ trên máy chủ.
 
-ÄÃ¢y lÃ  má»™t tráº£i nghiá»‡m ráº¥t thÃº vá»‹ Ä‘á»‘i vá»›i nhÃ³m trong quÃ¡ trÃ¬nh há»c táº­p vÃ  thá»±c hiá»‡n dá»± Ã¡n.
+Đây là một trải nghiệm rất thú vị đối với nhóm trong quá trình học tập và thực hiện dự án.
 
-KhÃ´ng biáº¿t anh/chá»‹ vÃ  cÃ¡c báº¡n trong cá»™ng Ä‘á»“ng Ä‘Ã£ tá»«ng sá»­ dá»¥ng **AWS Elemental MediaConvert** hoáº·c giáº£i phÃ¡p nÃ o khÃ¡c cho há»‡ thá»‘ng video streaming chÆ°a? Ráº¥t mong Ä‘Æ°á»£c láº¯ng nghe nhá»¯ng chia sáº» vÃ  gÃ³p Ã½ Ä‘á»ƒ nhÃ³m cÃ³ thá»ƒ tiáº¿p tá»¥c hoÃ n thiá»‡n dá»± Ã¡n.
+Không biết anh/chị và các bạn trong cộng đồng đã từng sử dụng **AWS Elemental MediaConvert** hoặc giải pháp nào khác cho hệ thống video streaming chưa? Rất mong được lắng nghe những chia sẻ và góp ý để nhóm có thể tiếp tục hoàn thiện dự án.
 
-Xin cáº£m Æ¡n má»i ngÆ°á»i Ä‘Ã£ dÃ nh thá»i gian Ä‘á»c bÃ i!
+Xin cảm ơn mọi người đã dành thời gian đọc bài!
 
-ðŸ“š Link tham kháº£o
+📚 Link tham khảo
 [https://aws.amazon.com/mediaconvert/](https://aws.amazon.com/mediaconvert/)
 [https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html](https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html?utm_source=chatgpt.com)
 [https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-jobs.html](https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-jobs.html)
+
 

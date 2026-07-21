@@ -7,39 +7,40 @@ pre: " <b> 3.2. </b> "
 ---
 ![S3, MediaConvert, CloudFront va website streaming flow](/images/3-BlogsPosted/3.2-Blog2/s3-cloudfront-streaming.png)
 
-ðŸ“ BÃ i 2: Chia sáº» má»™t kinh nghiá»‡m nhá» khi xÃ¢y dá»±ng website xem phim trÃªn AWS
+📝 Bài 2: Chia sẻ một kinh nghiệm nhỏ khi xây dựng website xem phim trên AWS
 
-Xin chÃ o má»i ngÆ°á»i,
+Xin chào mọi người,
 
-Trong quÃ¡ trÃ¬nh phÃ¡t triá»ƒn dá»± Ã¡n **Netflop**, nhÃ³m mÃ¬nh tá»«ng Ä‘áº·t cÃ¢u há»i:
+Trong quá trình phát triển dự án **Netflop**, nhóm mình từng đặt câu hỏi:
 
-**Táº¡i sao khÃ´ng phÃ¡t video trá»±c tiáº¿p tá»« Amazon S3 mÃ  láº¡i pháº£i dÃ¹ng thÃªm Amazon CloudFront?**
+**Tại sao không phát video trực tiếp từ Amazon S3 mà lại phải dùng thêm Amazon CloudFront?**
 
-Sau khi tÃ¬m hiá»ƒu vÃ  triá»ƒn khai thá»±c táº¿, nhÃ³m nháº­n tháº¥y CloudFront mang láº¡i ráº¥t nhiá»u lá»£i Ã­ch.
+Sau khi tìm hiểu và triển khai thực tế, nhóm nhận thấy CloudFront mang lại rất nhiều lợi ích.
 
-Thay vÃ¬ ngÆ°á»i dÃ¹ng truy cáº­p trá»±c tiáº¿p vÃ o S3, toÃ n bá»™ video **HLS** Ä‘Æ°á»£c phÃ¢n phá»‘i thÃ´ng qua **Amazon CloudFront**.
+Thay vì người dùng truy cập trực tiếp vào S3, toàn bộ video **HLS** được phân phối thông qua **Amazon CloudFront**.
 
-Má»™t sá»‘ lá»£i Ã­ch mÃ  nhÃ³m nháº­n tháº¥y:
+Một số lợi ích mà nhóm nhận thấy:
 
-âœ… Giáº£m Ä‘á»™ trá»… khi xem video.
+✅ Giảm độ trễ khi xem video.
 
-âœ… TÄƒng tá»‘c Ä‘á»™ táº£i nhá» cÆ¡ cháº¿ Cache táº¡i Edge Locations.
+✅ Tăng tốc độ tải nhờ cơ chế Cache tại Edge Locations.
 
-âœ… Giáº£m sá»‘ lÆ°á»£ng request trá»±c tiáº¿p Ä‘áº¿n S3.
+✅ Giảm số lượng request trực tiếp đến S3.
 
-âœ… Há»— trá»£ HTTPS máº·c Ä‘á»‹nh.
+✅ Hỗ trợ HTTPS mặc định.
 
-âœ… CÃ³ thá»ƒ báº£o vá»‡ ná»™i dung báº±ng **CloudFront Signed Cookies**, chá»‰ ngÆ°á»i dÃ¹ng Ä‘Ã£ Ä‘Æ°á»£c xÃ¡c thá»±c má»›i xem Ä‘Æ°á»£c video.
+✅ Có thể bảo vệ nội dung bằng **CloudFront Signed Cookies**, chỉ người dùng đã được xác thực mới xem được video.
 
-Äá»‘i vá»›i cÃ¡c website cÃ³ nhiá»u ná»™i dung media nhÆ° xem phim hoáº·c há»c trá»±c tuyáº¿n, CloudFront thá»±c sá»± lÃ  má»™t dá»‹ch vá»¥ ráº¥t Ä‘Ã¡ng Ä‘á»ƒ tÃ¬m hiá»ƒu.
+Đối với các website có nhiều nội dung media như xem phim hoặc học trực tuyến, CloudFront thực sự là một dịch vụ rất đáng để tìm hiểu.
 
-ðŸ‘‰ KhÃ´ng biáº¿t má»i ngÆ°á»i thÆ°á»ng sá»­ dá»¥ng **CloudFront**, **S3 trá»±c tiáº¿p** hay CDN khÃ¡c khi xÃ¢y dá»±ng há»‡ thá»‘ng streaming? Ráº¥t mong Ä‘Æ°á»£c há»c há»i thÃªm tá»« má»i ngÆ°á»i.
+👉 Không biết mọi người thường sử dụng **CloudFront**, **S3 trực tiếp** hay CDN khác khi xây dựng hệ thống streaming? Rất mong được học hỏi thêm từ mọi người.
 
-ðŸ“š Link tham kháº£o
+📚 Link tham khảo
 [https://aws.amazon.com/cloudfront/](https://aws.amazon.com/cloudfront/)
 [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html?utm_source=chatgpt.com)
 [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html?utm_source=chatgpt.com)
+
 
 
 

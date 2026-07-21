@@ -1,4 +1,4 @@
----
+﻿---
 title: "Chuẩn bị môi trường"
 date: 2026-07-10
 weight: 2
@@ -78,3 +78,4 @@ npm --prefix frontend run build
 Nếu build frontend thành công và backend kết nối được database local/RDS, có thể chuyển sang triển khai hạ tầng.
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

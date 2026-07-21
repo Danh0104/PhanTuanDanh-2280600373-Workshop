@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 3"
 date: 2026-05-04
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.3. </b> "
 * Hiểu được mối liên hệ giữa nghiệp vụ website xem phim và dữ liệu lưu trong RDS MySQL.
 * Xác định được các API quan trọng cần nhắc trong báo cáo, đặc biệt là upload video và cấp phiên stream.
 * Có nội dung nền để giải thích vì sao kiến trúc AWS hiện tại phù hợp với hệ thống Netflop.
+

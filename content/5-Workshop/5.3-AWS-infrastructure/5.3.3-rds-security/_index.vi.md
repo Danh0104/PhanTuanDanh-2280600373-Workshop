@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cấu hình RDS và Security Group"
 date: 2026-07-10
 weight: 3
@@ -155,3 +155,4 @@ const pool = mysql.createPool({
 4. Admin thấy danh sách phim/tập phim.
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

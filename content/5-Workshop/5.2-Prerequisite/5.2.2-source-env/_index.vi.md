@@ -1,4 +1,4 @@
----
+﻿---
 title: "Chuẩn bị source code và biến môi trường"
 date: 2026-07-10
 weight: 2
@@ -178,3 +178,4 @@ curl -I https://netflop.win/api/health
 Trong báo cáo chỉ đưa biến mẫu. Không chụp hoặc ghi access key, database password, client secret, JWT secret và CloudFront private key.
 {{% /notice %}}
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

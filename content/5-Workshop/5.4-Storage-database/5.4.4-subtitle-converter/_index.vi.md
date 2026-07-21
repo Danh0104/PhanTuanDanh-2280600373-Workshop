@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cấu hình Lambda chuyển phụ đề"
 date: 2026-07-10
 weight: 4
@@ -182,3 +182,4 @@ const tracks = subtitles
 ~~~
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

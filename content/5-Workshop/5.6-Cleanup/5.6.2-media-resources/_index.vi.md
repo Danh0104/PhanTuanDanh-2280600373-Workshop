@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dọn dẹp tài nguyên media và automation"
 date: 2026-07-10
 weight: 2
@@ -123,3 +123,4 @@ Nếu đổi/xóa HLS output mà CDN vẫn cache, tạo invalidation:
 aws cloudfront create-invalidation --distribution-id <distribution-id> --paths "/movies/*"
 ~~~
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

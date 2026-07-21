@@ -1,4 +1,4 @@
----
+﻿---
 title: "Các events đã tham gia"
 date: 2024-01-01
 weight: 4
@@ -17,3 +17,4 @@ Trong quá trình thực tập, em đã tham gia một sự kiện: **FCAJ Commu
 &emsp;**Địa điểm:** Bitexco Financial Tower, Thành phố Hồ Chí Minh, Việt Nam
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự
+

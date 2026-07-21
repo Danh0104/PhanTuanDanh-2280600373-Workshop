@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cấu hình CloudFront phát HLS"
 date: 2026-07-10
 weight: 3
@@ -184,3 +184,4 @@ const hls = new Hls({
 
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

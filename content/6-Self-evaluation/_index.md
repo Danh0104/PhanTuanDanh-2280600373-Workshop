@@ -1,4 +1,4 @@
----
+﻿---
 title: "Self-Assessment"
 date: 2026-07-11
 weight: 6
@@ -55,3 +55,4 @@ In terms of work attitude, I tried to complete the report content week by week, 
 ### Future Direction
 
 After the internship, I want to continue learning more about AWS Solutions Architecture, DevOps automation, cloud security, and applying AI to system operations. I also want to practice more with CI/CD, Infrastructure as Code, observability, and safer deployment patterns for real web applications.
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Kiểm thử chức năng người dùng"
 date: 2026-07-10
 weight: 2
@@ -136,3 +136,4 @@ await pool.execute(
 
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

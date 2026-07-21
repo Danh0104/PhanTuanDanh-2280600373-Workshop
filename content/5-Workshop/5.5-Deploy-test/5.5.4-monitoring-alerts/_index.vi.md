@@ -1,4 +1,4 @@
----
+﻿---
 title: "Kiểm tra monitoring và cảnh báo"
 date: 2026-07-10
 weight: 4
@@ -134,3 +134,4 @@ aws cloudwatch put-metric-alarm \
 4. Kiểm tra email đã confirm SNS subscription.
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

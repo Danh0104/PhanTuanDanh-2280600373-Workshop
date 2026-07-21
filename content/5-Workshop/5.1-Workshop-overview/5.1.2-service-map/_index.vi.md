@@ -1,4 +1,4 @@
----
+﻿---
 title: "Bảng dịch vụ và vai trò"
 date: 2026-07-10
 weight: 2
@@ -95,3 +95,4 @@ API Gateway, ALB, WAF và Route 53 chưa bắt buộc trong bản triển khai h
 3. Nêu một chức năng website phụ thuộc vào resource đó.
 4. Đưa code backend/frontend liên quan ở các mục sau.
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 11"
 date: 2026-06-29
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.11. </b> "
 * Có bản mô tả kiến trúc AWS tương đối đầy đủ cho web Netflop.
 * Xác định được các điểm mạnh của hệ thống: tách media pipeline, dùng CloudFront, tự động hóa bằng Lambda/EventBridge và có monitoring.
 * Chuẩn bị được phần đề xuất cải thiện bảo mật, chi phí và vận hành.
+

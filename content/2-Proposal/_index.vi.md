@@ -1,4 +1,4 @@
----
+﻿---
 title: "Bản đề xuất"
 date: 2026-04-20
 weight: 2
@@ -220,3 +220,4 @@ Video Player subtitles
 * EventBridge/Lambda tự động cập nhật trạng thái tập phim sau khi MediaConvert hoàn tất.
 * Phụ đề `.srt` được Lambda chuyển sang `.vtt`.
 * CloudWatch và SNS hỗ trợ giám sát, cảnh báo cho EC2, RDS và Lambda.
+

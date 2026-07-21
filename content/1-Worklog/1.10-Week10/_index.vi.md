@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 10"
 date: 2026-06-22
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.10. </b> "
 * Mô tả được vai trò CloudWatch và SNS trong việc theo dõi sức khỏe hệ thống.
 * Có checklist kiểm thử các chức năng quan trọng của Netflop.
 * Ghi nhận được các điểm cần theo dõi khi hệ thống phục vụ nhiều người dùng hơn.
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 5"
 date: 2026-05-18
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.5. </b> "
 * Hiểu được S3 là thành phần lưu trữ trung tâm cho toàn bộ dữ liệu media của Netflop.
 * Phân biệt rõ dữ liệu gốc ở input bucket và dữ liệu phục vụ người dùng ở output bucket.
 * Có nội dung để trình bày luồng upload video, ảnh, avatar và phụ đề trong báo cáo.
+

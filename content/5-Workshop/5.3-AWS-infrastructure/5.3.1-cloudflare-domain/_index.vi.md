@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cấu hình Cloudflare domain"
 date: 2026-07-10
 weight: 1
@@ -121,3 +121,4 @@ curl -I https://netflop.win/api/health
 
  
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

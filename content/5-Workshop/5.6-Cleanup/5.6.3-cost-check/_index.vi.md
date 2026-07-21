@@ -1,4 +1,4 @@
----
+﻿---
 title: "Kiểm tra chi phí sau cleanup"
 date: 2026-07-10
 weight: 3
@@ -127,3 +127,4 @@ Khi upload 5 phim, mỗi phim 5GB, chi phí tăng ở 3 phần:
 | RDS | DB chạy 24/7 | Chọn instance nhỏ giai đoạn demo |
 | EC2 | Server chạy 24/7 | Stop khi không dùng demo |
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Tạo hạ tầng AWS"
 date: 2026-07-10
 weight: 3
@@ -81,3 +81,4 @@ User player + Admin upload
 | CloudFront | Mở URL HLS qua distribution |
 | CloudWatch | Alarm có trạng thái OK/ALARM |
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

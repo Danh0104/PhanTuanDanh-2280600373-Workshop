@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cấu hình EC2, Nginx và backend"
 date: 2026-07-10
 weight: 2
@@ -197,3 +197,4 @@ curl -I http://127.0.0.1:5000/api/health
 
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

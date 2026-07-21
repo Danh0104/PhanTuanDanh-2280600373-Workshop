@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cấu hình lưu trữ, database và xử lý media"
 date: 2026-07-10
 weight: 4
@@ -73,3 +73,4 @@ Phần này là lõi của website xem phim. Backend không upload video lên th
 | CloudFront URL | Đường dẫn phát tối ưu cho user |
 | Upload status | processing/ready/failed |
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

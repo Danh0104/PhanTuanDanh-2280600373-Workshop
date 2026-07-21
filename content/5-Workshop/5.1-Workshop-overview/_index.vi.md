@@ -1,60 +1,60 @@
 ﻿---
-title: "Tá»•ng quan workshop"
+title: "Tổng quan workshop"
 date: 2026-07-10
 weight: 1
 chapter: false
 pre: " <b> 5.1. </b> "
 ---
 
-Pháº§n nÃ y giá»›i thiá»‡u kiáº¿n trÃºc tá»•ng thá»ƒ cá»§a website xem phim **Netflop** trÃªn AWS vÃ  vai trÃ² cá»§a tá»«ng nhÃ³m dá»‹ch vá»¥. ÄÃ¢y lÃ  pháº§n ná»n Ä‘á»ƒ ngÆ°á»i Ä‘á»c hiá»ƒu cÃ¡ch request Ä‘i tá»« ngÆ°á»i dÃ¹ng Ä‘áº¿n há»‡ thá»‘ng, cÃ¡ch admin upload video vÃ  cÃ¡ch video Ä‘Æ°á»£c xá»­ lÃ½ tá»± Ä‘á»™ng trÆ°á»›c khi phÃ¡t trÃªn web.
+Phần này giới thiệu kiến trúc tổng thể của website xem phim **Netflop** trên AWS và vai trò của từng nhóm dịch vụ. Đây là phần nền để người đọc hiểu cách request đi từ người dùng đến hệ thống, cách admin upload video và cách video được xử lý tự động trước khi phát trên web.
 
-Netflop khÃ´ng chá»‰ lÃ  má»™t website CRUD Ä‘Æ¡n giáº£n. Há»‡ thá»‘ng cÃ³ pipeline media riÃªng gá»“m upload file lá»›n, lÆ°u file gá»‘c, chuyá»ƒn mÃ£, lÆ°u HLS output, phÃ¡t qua CDN, báº£o vá»‡ link stream vÃ  cáº­p nháº­t tráº¡ng thÃ¡i táº­p phim tá»± Ä‘á»™ng.
+Netflop không chỉ là một website CRUD đơn giản. Hệ thống có pipeline media riêng gồm upload file lớn, lưu file gốc, chuyển mã, lưu HLS output, phát qua CDN, bảo vệ link stream và cập nhật trạng thái tập phim tự động.
 
 ![](/2280600178_huynhduybao_workshopaws/images/5-Workshop/5.1-Workshop-overview/sodo.png)
 
-#### Ná»™i dung
+#### Nội dung
 
-1. [Kiáº¿n trÃºc tá»•ng quan](5.1.1-architecture/)
-2. [Báº£ng dá»‹ch vá»¥ vÃ  vai trÃ²](5.1.2-service-map/)
+1. [Kiến trúc tổng quan](5.1.1-architecture/)
+2. [Bảng dịch vụ và vai trò](5.1.2-service-map/)
 
 <!-- NETFLOP_DETAIL_START -->
-#### CÃ¡ch trÃ¬nh bÃ y tá»•ng quan
+#### Cách trình bày tổng quan
 
-á»ž pháº§n tá»•ng quan, nÃªn trÃ¬nh bÃ y theo hai gÃ³c nhÃ¬n:
+Ở phần tổng quan, nên trình bày theo hai góc nhìn:
 
-1. GÃ³c nhÃ¬n ngÆ°á»i dÃ¹ng: má»Ÿ web, Ä‘Äƒng nháº­p, chá»n phim, xem phim, tiáº¿p tá»¥c xem.
-2. GÃ³c nhÃ¬n admin: thÃªm phim, upload táº­p phim, theo dÃµi tiáº¿n trÃ¬nh convert, thÃªm phá»¥ Ä‘á».
+1. Góc nhìn người dùng: mở web, đăng nhập, chọn phim, xem phim, tiếp tục xem.
+2. Góc nhìn admin: thêm phim, upload tập phim, theo dõi tiến trình convert, thêm phụ đề.
 
-Sau Ä‘Ã³ liÃªn káº¿t tá»«ng chá»©c nÄƒng vá»›i dá»‹ch vá»¥ AWS tÆ°Æ¡ng á»©ng. VÃ­ dá»¥, chá»©c nÄƒng upload táº­p phim khÃ´ng chá»‰ náº±m á»Ÿ frontend mÃ  cÃ²n Ä‘i qua backend, S3 input, MediaConvert, S3 output, CloudFront vÃ  RDS.
+Sau đó liên kết từng chức năng với dịch vụ AWS tương ứng. Ví dụ, chức năng upload tập phim không chỉ nằm ở frontend mà còn đi qua backend, S3 input, MediaConvert, S3 output, CloudFront và RDS.
 
-#### Máº«u mÃ´ táº£ ngáº¯n trong bÃ¡o cÃ¡o
+#### Mẫu mô tả ngắn trong báo cáo
 
-Netflop Ä‘Æ°á»£c triá»ƒn khai theo mÃ´ hÃ¬nh á»©ng dá»¥ng web káº¿t há»£p media pipeline. EC2 cháº¡y á»©ng dá»¥ng chÃ­nh, RDS lÆ°u dá»¯ liá»‡u nghiá»‡p vá»¥, S3 lÆ°u file media, MediaConvert xá»­ lÃ½ video, CloudFront phÃ¢n phá»‘i HLS vÃ  Lambda xá»­ lÃ½ cÃ¡c tÃ¡c vá»¥ tá»± Ä‘á»™ng. CÃ¡ch triá»ƒn khai nÃ y giÃºp giáº£m táº£i cho EC2 vÃ¬ file video lá»›n khÃ´ng Ä‘Æ°á»£c lÆ°u lÃ¢u dÃ i trÃªn á»• Ä‘Ä©a mÃ¡y chá»§.
+Netflop được triển khai theo mô hình ứng dụng web kết hợp media pipeline. EC2 chạy ứng dụng chính, RDS lưu dữ liệu nghiệp vụ, S3 lưu file media, MediaConvert xử lý video, CloudFront phân phối HLS và Lambda xử lý các tác vụ tự động. Cách triển khai này giúp giảm tải cho EC2 vì file video lớn không được lưu lâu dài trên ổ đĩa máy chủ.
 <!-- NETFLOP_DETAIL_END -->
 
 <!-- NETFLOP_IMPLEMENTATION_START -->
-#### Ká»‹ch báº£n thá»±c hiá»‡n workshop
+#### Kịch bản thực hiện workshop
 
-Workshop Ä‘Æ°á»£c xÃ¢y dá»±ng theo ká»‹ch báº£n má»™t website xem phim cÃ³ hai nhÃ³m ngÆ°á»i dÃ¹ng:
+Workshop được xây dựng theo kịch bản một website xem phim có hai nhóm người dùng:
 
-* NgÆ°á»i dÃ¹ng thÆ°á»ng: Ä‘Äƒng kÃ½, Ä‘Äƒng nháº­p, xem phim, chá»n táº­p, báº­t phá»¥ Ä‘á», tiáº¿p tá»¥c xem, yÃªu thÃ­ch vÃ  Ä‘Ã¡nh giÃ¡ phim.
-* Quáº£n trá»‹ viÃªn: thÃªm phim, thÃªm táº­p phim, upload video lá»›n lÃªn S3, theo dÃµi tiáº¿n trÃ¬nh MediaConvert vÃ  quáº£n lÃ½ phá»¥ Ä‘á»/banner táº­p.
+* Người dùng thường: đăng ký, đăng nhập, xem phim, chọn tập, bật phụ đề, tiếp tục xem, yêu thích và đánh giá phim.
+* Quản trị viên: thêm phim, thêm tập phim, upload video lớn lên S3, theo dõi tiến trình MediaConvert và quản lý phụ đề/banner tập.
 
-#### Luá»“ng demo nÃªn trÃ¬nh bÃ y
+#### Luồng demo nên trình bày
 
-1. Truy cáº­p domain <code>https://netflop.win</code>.
-2. Kiá»ƒm tra danh sÃ¡ch phim, trang chi tiáº¿t phim vÃ  trang xem phim.
-3. ÄÄƒng nháº­p tÃ i khoáº£n admin.
-4. Upload má»™t táº­p phim MP4/MKV á»Ÿ trang quáº£n trá»‹.
-5. Kiá»ƒm tra file Ä‘Ã£ vÃ o S3 input bucket.
-6. Kiá»ƒm tra MediaConvert táº¡o HLS trong S3 output bucket.
-7. Má»Ÿ táº­p phim trÃªn website Ä‘á»ƒ phÃ¡t tá»« CloudFront.
-8. Upload phá»¥ Ä‘á» SRT/VTT vÃ  kiá»ƒm tra subtitle selector.
-9. Kiá»ƒm tra lá»‹ch sá»­ xem lÆ°u theo tÃ i khoáº£n.
+1. Truy cập domain <code>https://netflop.win</code>.
+2. Kiểm tra danh sách phim, trang chi tiết phim và trang xem phim.
+3. Đăng nhập tài khoản admin.
+4. Upload một tập phim MP4/MKV ở trang quản trị.
+5. Kiểm tra file đã vào S3 input bucket.
+6. Kiểm tra MediaConvert tạo HLS trong S3 output bucket.
+7. Mở tập phim trên website để phát từ CloudFront.
+8. Upload phụ đề SRT/VTT và kiểm tra subtitle selector.
+9. Kiểm tra lịch sử xem lưu theo tài khoản.
 
-#### CÃ¡c thÃ nh pháº§n project liÃªn quan
+#### Các thành phần project liên quan
 
-| ThÃ nh pháº§n | ÄÆ°á»ng dáº«n trong source |
+| Thành phần | Đường dẫn trong source |
 | --- | --- |
 | Backend API | <code>backend/src</code> |
 | Frontend React | <code>frontend/src</code> |
@@ -64,4 +64,5 @@ Workshop Ä‘Æ°á»£c xÃ¢y dá»±ng theo ká»‹ch báº£n má»™t we
 | Database dump | <code>database/web_xem_phim_final_dump.sql</code> |
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+
 

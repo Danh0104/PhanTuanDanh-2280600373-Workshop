@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 12"
 date: 2026-07-06
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.12. </b> "
 * Hoàn thành worklog 12 tuần theo hướng phù hợp với sinh viên thực tập tham gia dự án Netflop.
 * Báo cáo thể hiện được cả kiến thức AWS đã học và cách áp dụng vào một hệ thống web xem phim thực tế.
 * Có phần tổng kết rõ ràng về kiến trúc hiện tại, hạn chế còn tồn tại và hướng cải thiện sau thực tập.
+

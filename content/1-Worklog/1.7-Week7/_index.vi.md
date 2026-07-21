@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 7"
 date: 2026-06-01
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.7. </b> "
 * Hiểu được CloudFront giúp giảm tải cho S3 và cải thiện tốc độ phát video.
 * Nắm được cách hệ thống cấp quyền xem stream qua signed cookies thay vì mở public trực tiếp.
 * Có nội dung để trình bày luồng phát phim từ backend đến video player.
+

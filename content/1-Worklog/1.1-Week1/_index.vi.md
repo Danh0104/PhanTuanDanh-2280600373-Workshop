@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 1"
 date: 2026-04-20
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.1. </b> "
 * Hiểu được định hướng báo cáo là mô tả quá trình tham gia dự án Netflop trên AWS thay vì chỉ làm một bài lab riêng lẻ.
 * Xác định được các thành phần hệ thống cần đưa vào báo cáo: web app, backend API, database, media pipeline và monitoring.
 * Có kế hoạch 12 tuần rõ ràng để theo dõi tiến độ thực tập.
+

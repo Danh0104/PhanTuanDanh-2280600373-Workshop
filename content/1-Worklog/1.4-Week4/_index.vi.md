@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 4"
 date: 2026-05-11
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.4. </b> "
 * Mô tả được vai trò của EC2 là nơi chạy ứng dụng chính, gồm frontend build, backend Node.js và Nginx.
 * Hiểu được Cloudflare đang xử lý domain và HTTPS phía người dùng.
 * Ghi nhận được các điểm cải thiện bảo mật để đưa vào phần đánh giá cuối báo cáo.
+

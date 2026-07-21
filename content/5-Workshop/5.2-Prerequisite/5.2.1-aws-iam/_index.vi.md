@@ -1,4 +1,4 @@
----
+﻿---
 title: "Chuẩn bị AWS và IAM"
 date: 2026-07-10
 weight: 1
@@ -147,3 +147,4 @@ aws mediaconvert describe-endpoints --region ap-southeast-1
 ~~~
 
 <!-- NETFLOP_IMPLEMENTATION_END -->
+

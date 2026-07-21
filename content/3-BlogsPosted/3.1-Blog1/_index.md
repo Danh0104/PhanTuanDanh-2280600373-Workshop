@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 3.1. </b> "
 ---
 {{% notice warning %}}
-âš ï¸ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
+⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
 ![FFmpeg on EC2 compared with AWS Elemental MediaConvert](/images/3-BlogsPosted/3.1-Blog1/ffmpeg-vs-mediaconvert.png)
@@ -41,4 +41,5 @@ Thank you for reading!
 - [AWS Elemental MediaConvert](https://aws.amazon.com/mediaconvert/)
 - [What is AWS Elemental MediaConvert?](https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html)
 - [Working with jobs in AWS Elemental MediaConvert](https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-jobs.html)
+
 

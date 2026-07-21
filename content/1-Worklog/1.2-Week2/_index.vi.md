@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 2"
 date: 2026-04-27
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.2. </b> "
 * Nắm được kiến trúc tổng quan của Netflop theo cả luồng web chính và luồng media.
 * Hiểu được vì sao hệ thống dùng EC2 cho ứng dụng chính, còn Lambda chỉ xử lý các tác vụ tự động nhỏ.
 * Có bản nháp sơ đồ AWS Architecture đầu tiên cho báo cáo.
+

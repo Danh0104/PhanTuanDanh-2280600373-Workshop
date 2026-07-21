@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 6"
 date: 2026-05-25
 weight: 1
@@ -28,3 +28,4 @@ pre: " <b> 1.6. </b> "
 * Hiểu được vai trò MediaConvert trong việc chuẩn hóa video đầu vào thành HLS để phát trên web.
 * Mô tả được quá trình từ admin upload đến khi hệ thống có file HLS sẵn sàng.
 * Chuẩn bị được nội dung giải thích tại sao xử lý video được tách khỏi ứng dụng chính.
+
